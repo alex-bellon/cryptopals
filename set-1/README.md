@@ -1,6 +1,6 @@
 # Set 1
 
-### Challenge 1 - Convert hex to base64
+## Challenge 1 - Convert hex to base64
 
 The string:
 
@@ -13,7 +13,7 @@ Should produce:
 So go ahead and make that happen. You'll need to use this code for the rest of the exercises.
 
 
-### Challenge 2 - Fixed XOR
+## Challenge 2 - Fixed XOR
 
 Write a function that takes two equal-length buffers and produces their XOR combination.
 
@@ -29,7 +29,7 @@ If your function works properly, then when you feed it the string:
 
 `746865206b696420646f6e277420706c6179`
 
-### Challenge 3 - Single-byte XOR cipher
+## Challenge 3 - Single-byte XOR cipher
 
 The hex encoded string:
 
@@ -41,7 +41,7 @@ You can do this by hand. But don't: write code to do it for you.
 
 How? Devise some method for "scoring" a piece of English plaintext. Character frequency is a good metric. Evaluate each output and choose the one with the best score
 
-### Challenge 4 - Detect single-character XOR
+## Challenge 4 - Detect single-character XOR
 
 One of the 60-character strings in this file has been encrypted by single-character XOR.
 
@@ -53,7 +53,7 @@ Find it.
 in files/4.txt
 ```
 
-### Challenge 5 - Implement repeating-key XOR
+## Challenge 5 - Implement repeating-key XOR
 
 Here is the opening stanza of an important work of the English language:
 
@@ -75,7 +75,7 @@ a282b2f20430a652e2c652a3124333a653e2b2027630c692b20283165286326302e27282f
 
 Encrypt a bunch of stuff using your repeating-key XOR function. Encrypt your mail. Encrypt your password file. Your .sig file. Get a feel for it. I promise, we aren't wasting your time with this.
 
-### Challenge 6 - Break repeating-key XOR
+## Challenge 6 - Break repeating-key XOR
 
 There's a file here. It's been base64'd after being encrypted with repeating-key XOR.
 
@@ -93,11 +93,11 @@ and
 wokka wokka!!!
 ```
 is 37. Make sure your code agrees before you proceed.
-1. For each KEYSIZE, take the first KEYSIZE worth of bytes, and the second KEYSIZE worth of bytes, and find the edit distance between them. Normalize this result by dividing by KEYSIZE.
-1. The KEYSIZE with the smallest normalized edit distance is probably the key. You could proceed perhaps with the smallest 2-3 KEYSIZE values. Or take 4 KEYSIZE blocks instead of 2 and average the distances.
-1. Now that you probably know the KEYSIZE: break the ciphertext into blocks of KEYSIZE length.
-1. Now transpose the blocks: make a block that is the first byte of every block, and a block that is the second byte of every block, and so on.
-1. Solve each block as if it was single-character XOR. You already have code to do this.
-1. For each block, the single-byte XOR key that produces the best looking histogram is the repeating-key XOR key byte for that block. Put them together and you have the key.
+3. For each KEYSIZE, take the first KEYSIZE worth of bytes, and the second KEYSIZE worth of bytes, and find the edit distance between them. Normalize this result by dividing by KEYSIZE.
+4. The KEYSIZE with the smallest normalized edit distance is probably the key. You could proceed perhaps with the smallest 2-3 KEYSIZE values. Or take 4 KEYSIZE blocks instead of 2 and average the distances.
+5. Now that you probably know the KEYSIZE: break the ciphertext into blocks of KEYSIZE length.
+6. Now transpose the blocks: make a block that is the first byte of every block, and a block that is the second byte of every block, and so on.
+7. Solve each block as if it was single-character XOR. You already have code to do this.
+8. For each block, the single-byte XOR key that produces the best looking histogram is the repeating-key XOR key byte for that block. Put them together and you have the key.
 
 This code is going to turn out to be surprisingly useful later on. Breaking repeating-key XOR ("Vigenere") statistically is obviously an academic exercise, a "Crypto 101" thing. But more people "know how" to break it than can actually break it, and a similar technique breaks something much more important.
