@@ -20,31 +20,35 @@ def findDist(cipher):
 
 def testDist(cipher, keysize):
     chunks = []
-    for i in range([0, len(cipher)]):
-        chunks.append(cipher[i:i + keysize])
+    i = 0
+    while i < len(cipher):
+        chunks.append(cipher[i : i + keysize])
         i += keysize
-    
+    print(chunks)
+
     byteBlocks = []
     for pos in range(0, keysize):
-        block = []
-        for chunk in range(0, len(cipher)/keysize):
-            block.append(chunks[chunk][pos])
+        print(pos)
+        block = ''
+        #block = []
+        for chunk in range(0, int(len(cipher)/keysize)):
+            #block.append(chunks[chunk][pos])
+            block += chunks[chunk][pos]
         byteBlocks.append(block)
-    
+    print(byteBlocks)
     return byteBlocks
 
 def singleXOR(byteBlocks):
     for byteList in byteBlocks:
         string = ''.join(byte for byte in byteList) # maybe not
-        
-    
+
 def main():
     cipher = input('Enter the encoded string: ')
     distances = findDist(cipher)
-    size = sort(cipher, distances) # fix this, sort based on rating
-    
+    distances.sort() # fix this, sort based on rating
+    print(distances)
+
     for rank in range(0, 3):
-        byteBlocks = testDist(cipher, distances[rank][0])
-        
+        byteBlocks = testDist(cipher, distances[rank][1])
 
 main()
