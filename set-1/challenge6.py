@@ -1,4 +1,3 @@
-
 def hamming(a, b):
     aBin = ''.join(format(ord(x) , 'b').zfill(8) for x in a)
     bBin = ''.join(format(ord(x) , 'b').zfill(8) for x in b)
